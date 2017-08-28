@@ -1,0 +1,22 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  database: medical_test
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
+  port: 5432
+
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  reconnect: false
+  database: medical_development
+  pool: 5
+  username: postgres
+  password: password
+  host: localhost
+  port: 5432

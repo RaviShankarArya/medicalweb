@@ -1,0 +1,555 @@
+  [1m[35m (114.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (88.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170828064729)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (73.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "user_email" character varying, "email" character varying, "password_digest" character varying, "phone" character varying, "address" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170828064729"]]
+  [1m[35m (14.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-28 06:55:10.816123"], ["updated_at", "2017-08-28 06:55:10.816123"]]
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170828064729)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170828064729"]]
+  [1m[35m (18.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170828064729)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (92.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "user_email" character varying, "email" character varying, "password_digest" character varying, "phone" character varying, "address" text, "auth_token" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170828064729"]]
+  [1m[35m (13.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 13:21:34 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+HTTP Origin header (chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop) didn't match request.base_url (http://localhost:3000)
+Completed 422 Unprocessable Entity in 7ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
+activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.3) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.1.3) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.3) lib/active_support/callbacks.rb:130:in `run_callbacks'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.3) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 13:23:40 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+HTTP Origin header (chrome-extension://fhbjgbiflinjbdggehcddcbncdddomop) didn't match request.base_url (http://localhost:3000)
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:195:in `handle_unverified_request'
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:227:in `handle_unverified_request'
+actionpack (5.1.3) lib/action_controller/metal/request_forgery_protection.rb:222:in `verify_authenticity_token'
+activesupport (5.1.3) lib/active_support/callbacks.rb:413:in `block in make_lambda'
+activesupport (5.1.3) lib/active_support/callbacks.rb:197:in `block (2 levels) in halting'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.1.3) lib/active_support/callbacks.rb:198:in `block in halting'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `block in invoke_before'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `each'
+activesupport (5.1.3) lib/active_support/callbacks.rb:507:in `invoke_before'
+activesupport (5.1.3) lib/active_support/callbacks.rb:130:in `run_callbacks'
+actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+actionview (5.1.3) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 13:27:43 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 14083ms (ActiveRecord: 15.6ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_name' for User.):
+  
+app/controllers/api/v1/users_controller.rb:6:in `create'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 14:44:55 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/home/gmadmin/Documents/workspace/myfile/myapp/app/controllers/application_controller.rb:2: syntax error, unexpected tLABEL, expecting '='
+  protect_from_forgery, if: ->{request.format.json?}
+                           ^):
+  
+app/controllers/application_controller.rb:2: syntax error, unexpected tLABEL, expecting '='
+app/controllers/api/v1/users_controller.rb:3:in `<module:V1>'
+app/controllers/api/v1/users_controller.rb:2:in `<module:Api>'
+app/controllers/api/v1/users_controller.rb:1:in `<top (required)>'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 14:45:39 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Completed 500 Internal Server Error in 5660ms (ActiveRecord: 17.2ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_name' for User.):
+  
+app/controllers/api/v1/users_controller.rb:6:in `create'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 14:46:47 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170828064729)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.9ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170828064729"]]
+  [1m[35m (20.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170828064729)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (98.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "user_name" character varying, "email" character varying, "password_digest" character varying, "phone" character varying, "address" text, "auth_token" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170828064729"]]
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Completed 500 Internal Server Error in 461110ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'user_name' for User.):
+  
+app/controllers/api/v1/users_controller.rb:6:in `create'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 14:54:45 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "phone", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_name", "ravishankarg"], ["email", "ravi@yopmail.com"], ["password_digest", "$2a$10$XEwX8z83ZeOJTzSSo8OVe.diBvmgNx0lODnD4tLd4hwV9zbIpTFXa"], ["phone", "9901916142"], ["address", "some valid address"], ["created_at", "2017-08-28 09:25:00.808233"], ["updated_at", "2017-08-28 09:25:00.808233"]]
+  [1m[35m (18.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 15390ms (Views: 0.5ms | ActiveRecord: 29.0ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 14:56:42 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "phone", "address", "auth_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_name", "ravishankarg"], ["email", "ravi@yopmail.com"], ["password_digest", "$2a$10$WzpFSOBfmM5kzjHmbbdwV.4VrYSlYAiB/3YfVw1u47lLaATzxygci"], ["phone", "9901916142"], ["address", "some valid address"], ["auth_token", "ad0c02c28b01a2370cd7d2868b06298c"], ["created_at", "2017-08-28 09:26:52.265164"], ["updated_at", "2017-08-28 09:26:52.265164"]]
+  [1m[35m (17.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 109ms (Views: 0.5ms | ActiveRecord: 18.7ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 14:58:44 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "phone", "address", "auth_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_name", "ravishankarg"], ["email", "ravi@yopmail.com"], ["password_digest", "$2a$10$jLMnTGjBg.p64XcxNcBQfOJCFaU7l7vu6ITsP3S.8gNcPLxyE9mWy"], ["phone", "9901916142"], ["address", "some valid address"], ["auth_token", "e16461fe70bc199d24c6749dfb6ea24c"], ["created_at", "2017-08-28 09:28:44.528054"], ["updated_at", "2017-08-28 09:28:44.528054"]]
+  [1m[35m (24.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 113ms (Views: 0.5ms | ActiveRecord: 25.5ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:03:28 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Completed 422 Unprocessable Entity in 173ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:03:42 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"", "address"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+Completed 422 Unprocessable Entity in 77ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:12:08 +0530
+  
+NameError (uninitialized constant User::ConfigCenter):
+  
+app/models/user.rb:9:in `<class:User>'
+app/models/user.rb:1:in `<top (required)>'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:19:43 +0530
+  
+NameError (uninitialized constant User::ConfigCenter):
+  
+app/models/user.rb:9:in `<class:User>'
+app/models/user.rb:1:in `<top (required)>'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:19:51 +0530
+  
+NameError (uninitialized constant User::ConfigCenter):
+  
+app/models/user.rb:9:in `<class:User>'
+app/models/user.rb:1:in `<top (required)>'
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:21:00 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 110ms (Views: 0.3ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:21:36 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmail.com", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 89ms (Views: 0.3ms | ActiveRecord: 5.2ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:21:45 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmailcom", "phone"=>"9901916142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmailcom"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 78ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:22:07 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 104ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:22:48 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmail.com", "phone"=>"990 191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 76ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:28:43 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 77ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:29:05 +0530
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "phone", "address", "auth_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_name", "ravishankarg"], ["email", "ravi1@yopmail.com"], ["password_digest", "$2a$10$75i3nIxVTN8msiZVp9ok..uE3VDsrQJxzyOyQSm2CQaT9Qc3RwUGi"], ["phone", "990-191-6142"], ["address", "some valid address"], ["auth_token", "e164c677a5c889f9a989082cbcaa48d0"], ["created_at", "2017-08-28 09:59:05.492154"], ["updated_at", "2017-08-28 09:59:05.492154"]]
+  [1m[35m (17.3ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 115ms (Views: 0.3ms | ActiveRecord: 23.3ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:29:42 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi1@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi1@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 92ms (Views: 0.2ms | ActiveRecord: 4.3ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:30:11 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi12@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi12@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 85ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserProfiles (20170828100311)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (117.2ms)[0m  [1m[35mCREATE TABLE "user_profiles" ("id" bigserial primary key, "profile" character varying, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_87a6352e58"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (42.3ms)[0m  [1m[35mCREATE  INDEX  "index_user_profiles_on_user_id" ON "user_profiles"  ("user_id")[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170828100311"]]
+  [1m[35m (15.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 15:50:11 +0530
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi12@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi12@yopmail.com"], ["LIMIT", 1]]
+Unpermitted parameters: :user_name, :email, :phone, :address, :password, :password_confirmation
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi12@yopmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "phone", "address", "auth_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_name", "ravishankarg"], ["email", "ravi12@yopmail.com"], ["password_digest", "$2a$10$PFjI0QaHmmLCqgHQyqpq8ulh816Bfk5oM48bww/sXM/1NjkvT5xCO"], ["phone", "990-191-6142"], ["address", "some valid address"], ["auth_token", "7f0abf7330eb466c826c54198e79f030"], ["created_at", "2017-08-28 10:20:12.311972"], ["updated_at", "2017-08-28 10:20:12.311972"]]
+  [1m[35mSQL (2.7ms)[0m  [1m[32mINSERT INTO "user_profiles" ("user_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 5], ["created_at", "2017-08-28 10:20:12.323039"], ["updated_at", "2017-08-28 10:20:12.323039"]]
+  [1m[35m (11.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 180ms (Views: 0.5ms | ActiveRecord: 25.5ms)
+
+
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserProfiles (20170828100311)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE "user_profiles"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20170828100311"]]
+  [1m[35m (16.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2831464440618279480)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUserProfiles (20170828100311)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (93.6ms)[0m  [1m[35mCREATE TABLE "user_profiles" ("id" bigserial primary key, "avatar" character varying, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_87a6352e58"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (43.3ms)[0m  [1m[35mCREATE  INDEX  "index_user_profiles_on_user_id" ON "user_profiles"  ("user_id")[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170828100311"]]
+  [1m[35m (16.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2831464440618279480)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUserProfile Load (1.6ms)[0m  [1m[34mSELECT  "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 5], ["LIMIT", 1]]
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 17:11:52 +0530
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi12@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi12@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 97ms (Views: 0.2ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/api/v1/user" for 127.0.0.1 at 2017-08-28 17:12:02 +0530
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi13@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi13@yopmail.com"], ["LIMIT", 1]]
+Unpermitted parameters: :user_name, :email, :phone, :address, :password, :password_confirmation
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE User Exists (0.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi13@yopmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("user_name", "email", "password_digest", "phone", "address", "auth_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["user_name", "ravishankarg"], ["email", "ravi13@yopmail.com"], ["password_digest", "$2a$10$pIyCXKM1Rk.jq6OKlToPZej5JXjfvKKSvTjwkUHQwsXo6crRGqP9K"], ["phone", "990-191-6142"], ["address", "some valid address"], ["auth_token", "806c98509677c53d2f02b1c04e432064"], ["created_at", "2017-08-28 11:42:02.990789"], ["updated_at", "2017-08-28 11:42:02.990789"]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "user_profiles" ("user_id", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["user_id", 6], ["created_at", "2017-08-28 11:42:02.992995"], ["updated_at", "2017-08-28 11:42:02.992995"]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 149ms (Views: 0.3ms | ActiveRecord: 25.9ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:17:07 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi13@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "session"=>{"user"=>{"user_name"=>"ravishankarg", "email"=>"ravi13@yopmail.com", "phone"=>"990-191-6142", "address"=>"some valid address", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+No template found for Api::V1::SessionsController#create, rendering head :no_content
+Completed 204 No Content in 48ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:18:22 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+No template found for Api::V1::SessionsController#create, rendering head :no_content
+Completed 204 No Content in 15ms (ActiveRecord: 0.0ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:24:32 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 191656ms (Views: 0.9ms | ActiveRecord: 12.5ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:27:48 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 25838ms (ActiveRecord: 1.5ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/api/v1/sessions_controller.rb:8:in `create'
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:29:04 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 3165ms (ActiveRecord: 4.4ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 2)):
+  
+app/controllers/api/v1/sessions_controller.rb:8:in `create'
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:29:31 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "e5922edd79fa507143c28e6f9666a250"], ["updated_at", "2017-08-28 11:59:33.625155"], ["id", 1]]
+  [1m[35m (15.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUserProfile Load (0.4ms)[0m  [1m[34mSELECT  "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2571ms (Views: 0.3ms | ActiveRecord: 41.4ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 17:43:33 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 104ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 18:27:56 +0530
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 114ms (Views: 0.5ms | ActiveRecord: 5.5ms)
+
+
+Started POST "/api/v1/sign_in" for 127.0.0.1 at 2017-08-28 18:28:04 +0530
+Processing by Api::V1::SessionsController#create as */*
+  Parameters: {"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]", "session"=>{"email"=>"ravi@yopmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ravi@yopmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "187e09a206f0fc349b16ecdf8a7a6b43"], ["updated_at", "2017-08-28 12:58:04.796955"], ["id", 2]]
+  [1m[35m (55.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUserProfile Load (0.5ms)[0m  [1m[34mSELECT  "user_profiles".* FROM "user_profiles" WHERE "user_profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+Completed 200 OK in 212ms (Views: 0.3ms | ActiveRecord: 67.0ms)
+
+
